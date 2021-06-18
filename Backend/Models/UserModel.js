@@ -39,6 +39,10 @@ const schema = new Schema(
     },
     meeting: [
       {
+        interviewId: {
+          type: String,
+          required: true
+        },
         startTime: {
           type: Date,
           required: true

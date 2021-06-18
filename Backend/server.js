@@ -35,6 +35,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/authentication', require('./Routes/AuthenticationRoutes'));
+app.use('/users', require('./Routes/UserRoutes'));
+app.use('/interview', require('./Routes/InterviewRoutes'));
 
 // Starting the server
 app.listen(process.env.PORT, () =>

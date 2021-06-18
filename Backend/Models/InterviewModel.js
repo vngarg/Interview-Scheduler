@@ -9,6 +9,10 @@ const options = {
 
 const schema = new Schema(
   {
+    interviewId: {
+      type: String,
+      unique: true
+    },
     startTime: {
       type: Date,
       requred: true
