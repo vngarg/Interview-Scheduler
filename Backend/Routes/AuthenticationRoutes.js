@@ -5,7 +5,7 @@ const router = express.Router();
 const { generateJWTToken } = require("../_helpers/Functions");
 
 router.post("/login", Login);
-router.post("/signup", AdminSignup);
+router.post("/signup", Signup);
 
 // Login route.
 async function Login(req, res) {
@@ -51,13 +51,13 @@ async function Login(req, res) {
   } else {
     return res.status(404).json({
       data: [],
-      message: "User not found",
+      message: "Email or Password are Incorrect.",
     });
   }
 }
 
 // Admin Signup
-async function AdminSignup(req, res) {
+async function Signup(req, res) {
   var {
     fullName,
     contactNumber,
