@@ -59,14 +59,15 @@ const Home = (props) => {
       participants: interview.participants,
     };
 
-    fetch(`${API_URL}/interview/deleteInterview`, {
-      method: "DELETE",
-      headers: {
-        Authoriaztion: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `${API_URL}/interview/deleteInterview?_id=${interview._id}&interviewId=${interview.interviewId}&participants[]=${interview.participants}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 200 || res.status === 201) return res.json();
         else if (res.status === 401) {
@@ -93,10 +94,24 @@ const Home = (props) => {
         state.loading ? (
           <Loader />
         ) : state.meetings.length === 0 ? (
-          <h2 className="text-center m-5">No meeting Scheduled</h2>
+          <div className="text-center">
+            <h2 className="text-center m-5">No meeting Scheduled</h2>
+            <Button
+              variant="primary"
+              onClick={() => history.push("/addInterview")}
+            >
+              Schedule Meeting
+            </Button>
+          </div>
         ) : (
-          <div>
+          <div className="text-center">
             <SubHeading subHeading="Scheduled Meetings" />
+            <Button
+              variant="primary"
+              onClick={() => history.push("/addInterview")}
+            >
+              Schedule Meeting
+            </Button>
             <div className="d-flex direction-row flex-wrap justify-content-center">
               {state.meetings.map((meeting, index) => (
                 <Card className="m-4 shadow-lg" key={index}>
@@ -121,7 +136,12 @@ const Home = (props) => {
                       Edit
                     </Button>
 
-                    <Button variant="danger">Delete</Button>
+                    <Button
+                      variant="danger"
+                      onClick={() => deleteInterview(meeting)}
+                    >
+                      Delete
+                    </Button>
                   </Card.Body>
                 </Card>
               ))}

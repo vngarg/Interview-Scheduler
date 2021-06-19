@@ -9,6 +9,7 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Home from "./Pages/Home";
 import EditInterview from "./Pages/EditInterview";
+import AddInterview from "./Pages/AddInterview";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route path='/editInterview'>
           <EditInterview />
+        </Route>
+        <Route path='/addInterview'>
+          <AddInterview />
         </Route>
         <Redirect to="/login" />
       </Switch>

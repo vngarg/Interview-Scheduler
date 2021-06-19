@@ -2,9 +2,9 @@
 - [ ] Add authentication check to all the routes and add appropriate redirection.
 - [x] Add Logout.
 - [ ] Design a Footer
-- [ ] Delete throwing CORS error.
+- [x] Delete throwing CORS error.
 - [ ] Add a check to display only coming meetings. Past meetings should not be shown. You can do this either by creating a parameter in db or by adding a time check on Frontend.
-- [ ] Edit interview m Horizontal Scroll aa raha h.
+- [x] Edit interview m Horizontal Scroll aa raha h.
 
 ### Point To Remember
 - [ ] While editing an interview, members are not editbale.

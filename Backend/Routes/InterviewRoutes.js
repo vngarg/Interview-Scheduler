@@ -15,12 +15,14 @@ router.post("/newInterview", verifyAdminJWTToken, async (req, res) => {
       data: [],
       message: "Some parameters are missing",
     });
-  } else if (startTime >= endTime) {
-    return res.status(400).json({
-      data: [],
-      message: "Invalid Meeting time",
-    });
-  } else if (participants.length === 0) {
+  } 
+  // else if (compareDates(Date(startTime), Date(endTime))) {
+  //   return res.status(400).json({
+  //     data: [],
+  //     message: "Invalid Meeting time",
+  //   });
+  // } 
+  else if (participants.length === 0) {
     return res.status(400).json({
       data: [],
       message: "Select the participants for the meeting.",
@@ -77,9 +79,9 @@ router.get("/getAllInterviews", verifyAdminJWTToken, async (req, res) => {
 
 // Update an Interview
 router.patch("/updateInterview", verifyAdminJWTToken, async (req, res) => {
-  const { _id, startTime, endTime, participants, interviewId, title } = req.query;
+  const { _id, startTime, endTime, interviewId, title } = req.query;
   
-  if (!startTime || !endTime || !participants || !interviewId || !title) {
+  if (!startTime || !endTime || !interviewId || !title) {
     return res.status(400).json({
       data: [],
       message: "Some parameters are missing.",
@@ -120,17 +122,16 @@ router.patch("/updateInterview", verifyAdminJWTToken, async (req, res) => {
     startTime,
     endTime,
   };
-  await participants.map(async (participant) => {
+  await interview.participants.map(async (participant) => {
     const x = await userModel.findOneAndUpdate(
       { _id: participant },
       { $push: { meeting: meetingDetails } }
     );
-    console.log(x.meeting.length);
   });
 
   await interviewModel.findOneAndUpdate(
     { _id },
-    { startTime, endTime, participants, title }
+    { startTime, endTime, title }
   );
   return res.status(200).json({
     data: [],
@@ -140,8 +141,7 @@ router.patch("/updateInterview", verifyAdminJWTToken, async (req, res) => {
 
 // Delete an interview
 router.delete("/deleteInterview", verifyAdminJWTToken, async (req, res) => {
-  const { _id, interviewId, participants } = req.body;
-
+  const { _id, interviewId, participants } = req.query;
   if (!interviewId || !participants) {
     return res.status(400).json({
       data: [],
@@ -185,5 +185,14 @@ const checkOverLappingTime = async (participants, startTime, endTime) => {
     return false;
   });
 };
+
+const compareDates = (start, end) => {
+// return the situation ki start >= end
+const timea = start.substr(4,12);
+const timeb = end.substr(4, 12);
+console.log(timea, timeb, timea < timeb)
+console.log(start, end)
+return (start >= end)
+}
 
 module.exports = router;
