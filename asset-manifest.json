@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Interview-Scheduler/static/css/main.8cef61bf.chunk.css",
+    "main.js": "/Interview-Scheduler/static/js/main.3d169b4d.chunk.js",
+    "main.js.map": "/Interview-Scheduler/static/js/main.3d169b4d.chunk.js.map",
+    "runtime-main.js": "/Interview-Scheduler/static/js/runtime-main.752c4cb2.js",
+    "runtime-main.js.map": "/Interview-Scheduler/static/js/runtime-main.752c4cb2.js.map",
+    "static/css/2.cad6684b.chunk.css": "/Interview-Scheduler/static/css/2.cad6684b.chunk.css",
+    "static/js/2.0cdabefe.chunk.js": "/Interview-Scheduler/static/js/2.0cdabefe.chunk.js",
+    "static/js/2.0cdabefe.chunk.js.map": "/Interview-Scheduler/static/js/2.0cdabefe.chunk.js.map",
+    "index.html": "/Interview-Scheduler/index.html",
+    "static/css/2.cad6684b.chunk.css.map": "/Interview-Scheduler/static/css/2.cad6684b.chunk.css.map",
+    "static/css/main.8cef61bf.chunk.css.map": "/Interview-Scheduler/static/css/main.8cef61bf.chunk.css.map",
+    "static/js/2.0cdabefe.chunk.js.LICENSE.txt": "/Interview-Scheduler/static/js/2.0cdabefe.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.752c4cb2.js",
+    "static/css/2.cad6684b.chunk.css",
+    "static/js/2.0cdabefe.chunk.js",
+    "static/css/main.8cef61bf.chunk.css",
+    "static/js/main.3d169b4d.chunk.js"
+  ]
+}

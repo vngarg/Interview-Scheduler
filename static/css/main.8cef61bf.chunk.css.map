@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/Components/styles.css"],"names":[],"mappings":"AAAA,WACE,UAAW,CACX,eACF,CAEA,iBACE,cACF","file":"main.8cef61bf.chunk.css","sourcesContent":[".touchAble {\n  color: blue;\n  font-weight: bold;\n}\n\n.touchAble:hover {\n  cursor: pointer;\n}\n"]}
