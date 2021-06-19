@@ -51,6 +51,7 @@ const Login = () => {
           }
         })
         .then((response) => {
+          localStorage.setItem('role', response.data.role);
           localStorage.setItem("token", response.data.jwtToken);
           localStorage.setItem("email", response.data.email);
           localStorage.setItem("fullName", response.data.fullName);

@@ -6,6 +6,7 @@ import InputField from "../Components/InputField";
 import Touchable from "../Components/Touchable";
 import { useHistory } from "react-router-dom";
 import { API_URL } from "../Config/config";
+import CustomAlert from "../Components/CustomAlert";
 
 const Signup = () => {
   const history = useHistory();
@@ -75,11 +76,13 @@ const Signup = () => {
           }
         })
         .then((response) => {
-            console.log(response);
-          localStorage.setItem("token", response.data.jwtToken);
-          localStorage.setItem("email", response.data.email);
-          localStorage.setItem("fullName", response.data.fullName);
-          history.push("/home");
+          <CustomAlert
+            title="Your account has been created."
+            message="Please Login."
+            label="Ok"
+            onClick={() => history.push("/login")}
+          />;
+          history.push("/login");
         })
         .catch((error) => console.log(error));
     }

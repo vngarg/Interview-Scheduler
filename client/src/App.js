@@ -8,6 +8,7 @@ import {
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Home from "./Pages/Home";
+import EditInterview from "./Pages/EditInterview";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route path='/home'>
           <Home />
+        </Route>
+        <Route path='/editInterview'>
+          <EditInterview />
         </Route>
         <Redirect to="/login" />
       </Switch>

@@ -16,7 +16,6 @@ router.get("/getAllUsers", verifyAdminJWTToken, async (req, res) => {
 // fetch a single user from their _id
 router.get("/getUser", verifyAdminJWTToken, async (req, res) => {
   const _id = req.query._id;
-  console.log(_id);
   const user = await userModel.findOne({ _id });
 
   if (user)

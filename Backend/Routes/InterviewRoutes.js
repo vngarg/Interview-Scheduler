@@ -7,10 +7,10 @@ const interviewModel = require("../Models/InterviewModel");
 
 // create a new Interview
 router.post("/newInterview", verifyAdminJWTToken, async (req, res) => {
-  const { startTime, endTime, participants } = req.body;
+  const { startTime, endTime, participants, title } = req.body;
   const interviewId = uuidv4();
 
-  if (!participants || !startTime || !endTime) {
+  if (!participants || !startTime || !endTime || !title) {
     return res.status(400).json({
       data: [],
       message: "Some parameters are missing",
@@ -55,6 +55,7 @@ router.post("/newInterview", verifyAdminJWTToken, async (req, res) => {
     endTime,
     participants,
     interviewId,
+    title
   });
   await user.save();
 
@@ -76,19 +77,20 @@ router.get("/getAllInterviews", verifyAdminJWTToken, async (req, res) => {
 
 // Update an Interview
 router.patch("/updateInterview", verifyAdminJWTToken, async (req, res) => {
-  const { _id, startTime, endTime, participants, interviewId } = req.body;
-
-  if (!startTime || !endTime || !participants || !interviewId) {
+  const { _id, startTime, endTime, participants, interviewId, title } = req.query;
+  
+  if (!startTime || !endTime || !participants || !interviewId || !title) {
     return res.status(400).json({
       data: [],
       message: "Some parameters are missing.",
     });
-  } else if (startTime >= endTime) {
-    return res.status(400).json({
-      data: [],
-      message: "Invalid Meeting time",
-    });
-  }
+  } 
+  // else if (startTime >= endTime) {
+  //   return res.status(400).json({
+  //     data: [],
+  //     message: "Invalid Meeting time",
+  //   });
+  // }
 
   const interview = await interviewModel.findOne({ _id });
 
@@ -128,7 +130,7 @@ router.patch("/updateInterview", verifyAdminJWTToken, async (req, res) => {
 
   await interviewModel.findOneAndUpdate(
     { _id },
-    { startTime, endTime, participants }
+    { startTime, endTime, participants, title }
   );
   return res.status(200).json({
     data: [],
